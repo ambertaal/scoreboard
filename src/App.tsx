@@ -1,7 +1,7 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 
-import Scoreboard from "./components/Scoreboard";
+import Scoreboard from "./components/Scoreboard/Scoreboard";
 import Title from "./components/Title";
 
 function App() {

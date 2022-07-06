@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Player from "./Player";
-import AddPlayerForm from "./AddPlayerForm";
+import Player from "../Player/Player";
+import AddPlayerForm from "../AddPlayerForm";
+import "./Scoreboard.scss";
 
 type PlayerObj = {
   id: number;
@@ -85,9 +86,6 @@ const Scoreboard = () => {
 
   return (
     <div className="Scoreboard">
-      <button onClick={reset}>reset scores</button>
-      <button onClick={randomize}>randomize scores</button>
-      <button onClick={incrementAllScores}>increment all scores</button>
       <p>
         Sort order:{" "}
         <select
@@ -98,7 +96,10 @@ const Scoreboard = () => {
         >
           <option value="score">Sort by score</option>
           <option value="name">Sort by name</option>
-        </select>
+        </select>{" "}
+        - <button onClick={reset}>reset scores</button> -{" "}
+        <button onClick={randomize}>randomize scores</button> -{" "}
+        <button onClick={incrementAllScores}>increment all scores</button>
       </p>
       <h1>Player's scores:</h1>
       <ul>

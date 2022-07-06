@@ -1,4 +1,5 @@
 import React from "react";
+import "./Player.scss";
 
 type Props = {
   id: number;
@@ -11,6 +12,10 @@ type Props = {
 const Player = (props: Props) => {
   return (
     <li className="Player">
+      <div
+        className="percentage_coloring"
+        style={{ width: props.score + "%" }}
+      />
       <p>
         {props.name} (score: {props.score}){" "}
         <button onClick={props.incrementScore}>increment</button>

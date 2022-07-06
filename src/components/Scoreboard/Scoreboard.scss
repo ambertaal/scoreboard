@@ -1,0 +1,20 @@
+.Scoreboard {
+  ul {
+    padding: 0;
+  }
+}
+
+button {
+  background: white;
+
+  &:hover {
+    background: #bf0073;
+    color: white;
+  }
+  &:focus {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}
