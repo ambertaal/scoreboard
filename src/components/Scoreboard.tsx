@@ -26,12 +26,44 @@ const Scoreboard = () => {
     { id: 4, name: "Lisa", score: 42 },
   ]);
 
+  const reset = () => {
+    setPlayers(
+      players.map((player) => {
+        return {
+          ...player,
+          score: 0,
+        };
+      })
+    );
+  };
+
+  // Defining the callback function:
+  const incrementScore = (id: number) => {
+    const updatedPlayersArray = players.map((player) => {
+      // decide whether this player's score needs to be incremented
+      if (player.id === id) {
+        // and if so, create a new player object,
+        return {
+          // but first copying over the player object's data
+          ...player,
+          // and then overriding the score property to be incremented
+          score: player.score + 1,
+        };
+      } else {
+        // else, just keep them
+        return player;
+      }
+    });
+    setPlayers(updatedPlayersArray);
+  };
+
   const playersSorted = [...players].sort(
     sortBy === "name" ? compareByName : compareByScore
   );
 
   return (
     <div className="Scoreboard">
+      <button onClick={reset}>reset scores</button>
       <p>
         Sort order:{" "}
         <select
@@ -48,7 +80,15 @@ const Scoreboard = () => {
       <ul>
         {playersSorted.map((player) => {
           return (
-            <Player key={player.id} name={player.name} score={player.score} />
+            <Player
+              key={player.id}
+              name={player.name}
+              score={player.score}
+              // Passing it down as a prop
+              incrementScore={() => {
+                incrementScore(player.id);
+              }}
+            />
           );
         })}
       </ul>
