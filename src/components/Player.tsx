@@ -1,6 +1,7 @@
 import React from "react";
 
 type Props = {
+  id: number;
   key: number;
   name: string;
   score: number;

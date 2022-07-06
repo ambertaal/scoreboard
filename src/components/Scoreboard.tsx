@@ -37,6 +37,28 @@ const Scoreboard = () => {
     );
   };
 
+  const incrementAllScores = () => {
+    setPlayers(
+      players.map((player) => {
+        return {
+          ...player,
+          score: player.score + 1,
+        };
+      })
+    );
+  };
+
+  const randomize = () => {
+    setPlayers(
+      players.map((player) => {
+        return {
+          ...player,
+          score: Math.floor(Math.random() * 100),
+        };
+      })
+    );
+  };
+
   // Defining the callback function:
   const incrementScore = (id: number) => {
     const updatedPlayersArray = players.map((player) => {
@@ -64,6 +86,8 @@ const Scoreboard = () => {
   return (
     <div className="Scoreboard">
       <button onClick={reset}>reset scores</button>
+      <button onClick={randomize}>randomize scores</button>
+      <button onClick={incrementAllScores}>increment all scores</button>
       <p>
         Sort order:{" "}
         <select
@@ -83,6 +107,7 @@ const Scoreboard = () => {
             <Player
               key={player.id}
               name={player.name}
+              id={player.id}
               score={player.score}
               // Passing it down as a prop
               incrementScore={() => {
